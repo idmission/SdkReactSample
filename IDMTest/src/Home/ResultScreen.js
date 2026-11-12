@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, TouchableOpacity, Text, Image } from 'react-native'
-import { Container, Header, Content, Picker, Left, Icon, Body,Button} from "native-base";
+import { View, TouchableOpacity, Text, Image, ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import * as constant from '../Constant'
 import styles from '../Styles'
 
@@ -25,18 +25,15 @@ export default class ResultScreen extends React.Component {
     }
     render() {
         return (
-            <Container>
-                <Header style={{ backgroundColor: constant.baseColor }}>
-                    <Left>
-                        <Button transparent onPress={()=>this.props.navigation.goBack()}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }} edges={['bottom', 'left', 'right']}>
+                <SafeAreaView edges={['top']} style={{ backgroundColor: constant.baseColor }}>
+                    <View style={{ height: 56, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10 }}>
+                        <TouchableOpacity onPress={()=>this.props.navigation.goBack()} style={{ padding: 8 }}>
                             <Text style={styles.mainText}>Back</Text>
-                        </Button>
-                    </Left>
-                    <Body>
-
-                    </Body>
-                </Header>
-                <Content contentContainerStyle={{ flex: 1, justifyContent: 'center' }}>
+                        </TouchableOpacity>
+                    </View>
+                </SafeAreaView>
+                <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
                     {
                         (this.props.route.params.eventName=="Data")?
                         (
@@ -58,8 +55,8 @@ export default class ResultScreen extends React.Component {
                         ):
                         null
                     }
-                </Content>
-            </Container>
+                </ScrollView>
+            </SafeAreaView>
 
         )
     }

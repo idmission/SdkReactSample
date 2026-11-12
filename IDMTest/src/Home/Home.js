@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, TouchableOpacity, Text, Image, Platform } from 'react-native'
-import { Container, Header, Content, Picker } from "native-base";
+import { View, TouchableOpacity, Text, Image, Platform, ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import * as constant from '../Constant'
 import styles from '../Styles'
 import { NativeModules, NativeEventEmitter } from 'react-native';
@@ -138,9 +138,9 @@ export default class Home extends React.Component {
 
     render() {
         return (
-            <Container>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
 			
-                <Content contentContainerStyle={{ justifyContent: 'center' }}>
+                <ScrollView contentContainerStyle={{ justifyContent: 'center' }}>
 
                     <TouchableOpacity style={styles.startButton} onPress={() => { this.onCustomizeUserInterface() }}>
                         <Text style={styles.startButtonText}>Customize User Interface</Text>
@@ -174,8 +174,8 @@ export default class Home extends React.Component {
                         <Text style={styles.startButtonText}>Process Image and Match Face</Text>
                     </TouchableOpacity>
 
-                </Content>
-            </Container>
+                </ScrollView>
+            </SafeAreaView>
         )
     }
 }

@@ -16,8 +16,6 @@ target 'IDMTest' do
     :hermes_enabled => false
   )
 
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
-
   pod 'WebRTC', :build_type => :dynamic_framework
   pod 'CocoaLumberjack', :build_type => :dynamic_framework
   pod 'SocketRocket', :build_type => :dynamic_framework
