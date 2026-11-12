@@ -9,7 +9,7 @@
     "test": "jest",
     "lint": "eslint ."
   },
- "dependencies": {
+  "dependencies": {
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
     "native-base": "^2.15.0",
@@ -32,5 +32,19 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "resolutions": {
+    "@babel/traverse": "^7.23.2",
+    "hermes-engine": "^0.10.0",
+    "minimist": "^1.2.6",
+    "plist": "^3.0.5",
+    "shell-quote": "^1.8.4"
+  },
+  "overrides": {
+    "@babel/traverse": "^7.23.2",
+    "hermes-engine": "^0.10.0",
+    "minimist": "^1.2.6",
+    "plist": "^3.0.5",
+    "shell-quote": "^1.8.4"
   }
 }
