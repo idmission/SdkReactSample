@@ -47,6 +47,13 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
         return "IDMissionSDK";
     }
 
+    // Required by NativeEventEmitter; events are sent via RCTDeviceEventEmitter.
+    @ReactMethod
+    public void addListener(String eventName) {}
+
+    @ReactMethod
+    public void removeListeners(double count) {}
+
     @ReactMethod
     public void  initializeSDK(String url, String loginID, String password, String merchantID, Integer productID, String productName, String language) {
         try {
@@ -90,7 +97,7 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
             JSONObject faceCaptureConfigJSONObject = new JSONObject(faceCaptureConfig);
             JSONObject uiConfigDictionaryJSONObject = new JSONObject(uiConfigDictionary);
 
-            ImageProcessingSDK.getInstance().detectFace(getCurrentActivity(), faceCaptureConfigJSONObject, uiConfigDictionaryJSONObject);
+            ImageProcessingSDK.getInstance().detectFace(getReactApplicationContext().getCurrentActivity(), faceCaptureConfigJSONObject, uiConfigDictionaryJSONObject);
 
         }
         catch (Exception e)
@@ -105,7 +112,7 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
 
             JSONObject additionalDictionaryJSONObject = new JSONObject(additionalDictionary);
             JSONObject uiConfigDictionaryJSONObject = new JSONObject(uiConfigDictionary);
-            ImageProcessingSDK.getInstance().autoCapture(getCurrentActivity(), ImageType.FRONT, uiConfigDictionaryJSONObject, additionalDictionaryJSONObject, null);
+            ImageProcessingSDK.getInstance().autoCapture(getReactApplicationContext().getCurrentActivity(), ImageType.FRONT, uiConfigDictionaryJSONObject, additionalDictionaryJSONObject, null);
         }
         catch (Exception e)
         {
@@ -119,7 +126,7 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
 
             JSONObject additionalDictionaryJSONObject = new JSONObject(additionalDictionary);
             JSONObject uiConfigDictionaryJSONObject = new JSONObject(uiConfigDictionary);
-            ImageProcessingSDK.getInstance().autoCapture(getCurrentActivity(), ImageType.BACK, uiConfigDictionaryJSONObject, additionalDictionaryJSONObject, null);
+            ImageProcessingSDK.getInstance().autoCapture(getReactApplicationContext().getCurrentActivity(), ImageType.BACK, uiConfigDictionaryJSONObject, additionalDictionaryJSONObject, null);
         }
         catch (Exception e)
         {
@@ -166,7 +173,7 @@ public class IDMissionSDK extends ReactContextBaseJavaModule implements ImagePro
             }
 
             ImageProcessingSDK.getInstance().setImageProcessingResponseListener(IDMissionSDK.this);
-            ImageProcessingSDK.getInstance().processImageAndMatchFace(getCurrentActivity(), countryCode, stateCode, idTypes, "FACE", additionalDictionaryJSONObject, true, true);
+            ImageProcessingSDK.getInstance().processImageAndMatchFace(getReactApplicationContext().getCurrentActivity(), countryCode, stateCode, idTypes, "FACE", additionalDictionaryJSONObject, true, true);
         }
         catch(Exception e)
         {

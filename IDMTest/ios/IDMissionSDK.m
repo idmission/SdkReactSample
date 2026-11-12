@@ -6,6 +6,7 @@
 #import "IDMissionSDK.h"
 #import <AppItFramework_IdFace/AppItSDK.h>
 #import <React/RCTEventEmitter.h>
+#import <React/RCTUtils.h>
 
 @interface IDMissionSDK ()
 
@@ -23,7 +24,7 @@ static IDMissionSDK *gInstance = NULL;
 
 RCT_EXPORT_METHOD(initializeSDK:(NSString *)url loginId:(NSString *)loginId password:(NSString *)password merchantid:(NSString *)merchantid productid:(NSNumber * _Nonnull)productid productname:(NSString *)productname language:(NSString *)language)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   gInstance = self;
   
@@ -53,7 +54,7 @@ RCT_EXPORT_METHOD(customizeUserInterface:(NSString *)uiconfiguration)
 
 RCT_EXPORT_METHOD(detectFace:(NSString *)faceCaptureConfig uiConfigDictionary:(NSString *)uiConfigDictionary)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
     NSError *error;
@@ -69,7 +70,7 @@ RCT_EXPORT_METHOD(detectFace:(NSString *)faceCaptureConfig uiConfigDictionary:(N
 
 RCT_EXPORT_METHOD(videoConferencing)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -84,7 +85,7 @@ RCT_EXPORT_METHOD(videoConferencing)
 
 /*RCT_EXPORT_METHOD(genericDocument)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -100,7 +101,7 @@ RCT_EXPORT_METHOD(videoConferencing)
 }*/
 
 RCT_EXPORT_METHOD(genericDocument) {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   dispatch_async(dispatch_get_main_queue(), ^{
     NSError *error;
     
@@ -126,7 +127,7 @@ RCT_EXPORT_METHOD(genericDocument) {
 
 RCT_EXPORT_METHOD(captureIDFront:(NSString *)additionalDictionary uiConfigDictionary:(NSString *)uiConfigDictionary)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
     NSError *error;
@@ -140,7 +141,7 @@ RCT_EXPORT_METHOD(captureIDFront:(NSString *)additionalDictionary uiConfigDictio
 
 RCT_EXPORT_METHOD(captureIDBack:(NSString *)additionalDictionary uiConfigDictionary:(NSString *)uiConfigDictionary)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
     NSError *error;
@@ -154,7 +155,7 @@ RCT_EXPORT_METHOD(captureIDBack:(NSString *)additionalDictionary uiConfigDiction
 
 RCT_EXPORT_METHOD(captureFingerprints)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -188,7 +189,7 @@ RCT_EXPORT_METHOD(captureFingerprints)
 
 RCT_EXPORT_METHOD(processImageAndMatchFace:(NSString *)countryCode stateCode:(NSString *)stateCode idType:(NSString *)idType additionalDictionary:(NSString *)additionalDictionary)
 {
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+  UIViewController *rootViewController = RCTKeyWindow().rootViewController;
   
   dispatch_async(dispatch_get_main_queue(), ^{
     NSError *error;
